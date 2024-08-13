@@ -23,7 +23,7 @@ export default function Game() {
     setCoordinates({ x: absoluteX, y: absoluteY });
     setIsVisible(!isVisible);
   }
-
+  
 
   return (
     <main>
