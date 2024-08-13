@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import Dropdown from "./Dropdown";
 
 const TargetingBox = ({ x, y, isVisible }) => {
   const boxWidth = 50;
@@ -15,12 +14,13 @@ const TargetingBox = ({ x, y, isVisible }) => {
     border: "2px solid red",
     borderRadius: "50%",
     pointerEvents: "none",
-  };
+  };  
+
+  
 
   return (
     <>
       <div style={boxStyle} />
-      {isVisible && <Dropdown x={x} y={y}  />}
     </>
   );
 };
