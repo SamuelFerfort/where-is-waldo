@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         element: <Leaderboard />,
       },
       {
-        path: "/game",
+        path: "/game/:imageId",
         element: <Game />,
       },
     ],

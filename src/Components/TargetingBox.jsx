@@ -20,7 +20,7 @@ const TargetingBox = ({ x, y, isVisible }) => {
   return (
     <>
       <div style={boxStyle} />
-      {isVisible && <Dropdown x={x} y={y} />}
+      {isVisible && <Dropdown x={x} y={y}  />}
     </>
   );
 };
