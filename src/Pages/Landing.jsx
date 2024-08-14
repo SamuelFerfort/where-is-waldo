@@ -1,13 +1,21 @@
 import ImageCard from "../Components/ImageCard";
-import useFetch from "../hooks/useFetchImages";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Landing() {
   const {
     data: images,
     error,
-    isLoading,
-  } = useFetch("http://localhost:3000/api/images");
-  if (isLoading) {
+    isPending,
+  } = useQuery({
+    queryKey: ["images"],
+    queryFn: async () => {
+      return fetch("http://localhost:3000/api/images").then((res) =>
+        res.json()
+      );
+    },
+  });
+
+  if (isPending) {
     return <p>Loading...</p>;
   }
 

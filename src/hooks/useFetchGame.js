@@ -5,6 +5,12 @@ const useFetch = (URL) => {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [characters, setCharacters] = useState([]);
+  const [gameStartTime, setGameStartTime] = useState(null)
+
+
+  
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,33 +21,39 @@ const useFetch = (URL) => {
         if (!response.ok) {
           throw new Error(data.message);
         }
-        setCharacters(
-          data.characters.map((c) => ({
-            ...c,
-            isFound: false,
-          }))
-        );
-        console.log(data)
+        const newCharacters = data.characters.map(c => ({ ...c, isFound: false }));
+        console.log('Initial characters state:', newCharacters);
+        setCharacters(newCharacters);
         setImageURL(data.url);
+        setLoading(false);
+        setGameStartTime(Date.now());
+
       } catch (err) {
         console.error(`Error fetching items:`, err);
         setError(err);
-      } finally {
-        setLoading(false);
-      }
+        setLoading(false)
+      } 
     };
     fetchData();
   }, [URL]);
 
+  
+
   const updateCharactersFound = (name) => {
+    
+    
     setCharacters((prevCharacters) =>
       prevCharacters.map((char) =>
-        char.name === name ? { ...char, isFound: true } : char
+        char.name === name ? { ...char, isFound: true} : char
       )
-    );
+    );    
+
+
   };
 
-  return { imageURL, isLoading, error, updateCharactersFound, characters };
+ 
+
+  return { imageURL, isLoading, error, updateCharactersFound, characters, gameStartTime };
 };
 
 export default useFetch;

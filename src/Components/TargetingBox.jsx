@@ -17,7 +17,7 @@ const TargetingBox = ({ x, y, isVisible }) => {
   };  
 
   
-
+  
   return (
     <>
       <div style={boxStyle} />

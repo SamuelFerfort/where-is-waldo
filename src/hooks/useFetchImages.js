@@ -12,7 +12,7 @@ const useFetch = (URL) => {
     const fetchData = async () => {
       try {
         const response = await fetch(URL);
-
+        console.log(response)
         const data = await response.json();
 
         if (!response.ok) {
