@@ -1,12 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-
-const formatDuration = (milliseconds) => {
-  const minutes = Math.floor(milliseconds / 60000);
-  const seconds = Math.floor((milliseconds % 60000) / 1000);
-  return `${minutes.toString().padStart(2, "0")}:${seconds
-    .toString()
-    .padStart(2, "0")}`
-};
+import formatTime from "../utils/formatTime";
 
 export default function Leaderboard() {
   const {
@@ -24,22 +17,29 @@ export default function Leaderboard() {
 
   return (
     <main className="p-7 flex flex-col items-center bg-gray-900">
-      <header>
+      {leaderboard && leaderboard.length > 0 ? (
         <section>
           <h1>Leaderboard</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {leaderboard.map((row) => (
+                <tr key={row.id}>
+                  <td>{row.name}</td>
+                  <td>{row.duration}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </section>
-        {leaderboard && leaderboard.length > 0 ? (
-          <ul>
-            {leaderboard.map((line) => (
-              <li key={line.id}>
-                {line.name} {formatDuration(line.duration)}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No leaderboard data available</p>
-        )}
-      </header>
+      ) : (
+        <h1>No leaderboard data, be the first one to beat the game!</h1>
+      )}
     </main>
   );
 }
