@@ -41,7 +41,6 @@ export default function Leaderboard() {
     
   const title = images.find(img => img.id = filter).title
  
-  console.log(title)
 
   return (
     <main className="p-7 flex flex-col items-center bg-gray-900 gap-10">
