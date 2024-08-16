@@ -1,5 +1,6 @@
 import ImageCard from "../Components/ImageCard";
 import { useQuery } from "@tanstack/react-query";
+import useTitle from "../hooks/useTitle";
 
 export default function Landing() {
   const {
@@ -14,6 +15,8 @@ export default function Landing() {
       );
     },
   });
+
+  useTitle("Home")
 
   if (isPending) {
     return <p>Loading...</p>;

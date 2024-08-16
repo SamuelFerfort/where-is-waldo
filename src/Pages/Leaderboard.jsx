@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import formatTime from "../utils/formatTime";
 import { useState } from "react";
+import useTitle from "../hooks/useTitle";
+
 
 export default function Leaderboard() {
   const [imageFilter, setImageFilter] = useState(null);
@@ -22,6 +24,8 @@ export default function Leaderboard() {
       );
     },
   });
+
+  useTitle("Leaderboard")
 
   function handleClick(e) {
     const filter = e.target.name;

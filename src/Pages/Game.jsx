@@ -4,6 +4,7 @@ import useFetchCharacters from "../hooks/useFetchGame";
 import { useParams, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import formatTime from "../utils/formatTime";
+import useTitle from "../hooks/useTitle";
 
 export default function Game() {
   const [isVisible, setIsVisible] = useState(null);
@@ -15,6 +16,7 @@ export default function Game() {
   const [elapsedTime, setElapsedTime] = useState(0);
 
   const {
+    title,
     imageURL,
     isLoading,
     error,
@@ -25,6 +27,7 @@ export default function Game() {
 
   const dialogRef = useRef(null);
   const navigate = useNavigate();
+  useTitle(title);
 
   useEffect(() => {
     let timer;

@@ -6,9 +6,9 @@ const useFetch = (URL) => {
   const [error, setError] = useState(null);
   const [characters, setCharacters] = useState([]);
   const [gameStartTime, setGameStartTime] = useState(null)
+  const [title, setTitle] = useState("Loading...")
 
 
-  
 
 
   useEffect(() => {
@@ -25,8 +25,10 @@ const useFetch = (URL) => {
         console.log('Initial characters state:', newCharacters);
         setCharacters(newCharacters);
         setImageURL(data.url);
+        
         setLoading(false);
         setGameStartTime(Date.now());
+        setTitle(data.title)
 
       } catch (err) {
         console.error(`Error fetching items:`, err);
@@ -53,7 +55,7 @@ const useFetch = (URL) => {
 
  
 
-  return { imageURL, isLoading, error, updateCharactersFound, characters, gameStartTime };
+  return { imageURL, isLoading, error, updateCharactersFound, characters, gameStartTime, title };
 };
 
 export default useFetch;
