@@ -5,11 +5,13 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
 
+
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
-      <div className="min-h-screen bg-gray-900 text-gray-200 ">
+       <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white">
         <Header />
         <Outlet />
       </div>

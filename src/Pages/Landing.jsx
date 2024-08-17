@@ -16,7 +16,7 @@ export default function Landing() {
     },
   });
 
-  useTitle("Home")
+  useTitle("Home");
 
   if (isPending) {
     return <p>Loading...</p>;
@@ -27,20 +27,20 @@ export default function Landing() {
   }
 
   return (
-    <main className="p-7 flex justify-center pt-20 bg-gray-900 ">
-      <section className="flex flex-col gap-8 items-center">
-        <h1 className="text-4xl">Games</h1>
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-3">
-          {images.map((image) => (
-            <ImageCard
-              key={image.id}
-              id={image.id}
-              url={image.url}
-              title={image.title}
-            />
-          ))}
-        </div>
-      </section>
-    </main>
+      <main className="container mx-auto p-7 pt-20">
+        <section className="flex flex-col gap-8 items-center">
+          <h1 className="text-4xl font-bold neon-text">Choose Map</h1>
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {images.map((image) => (
+              <ImageCard
+                key={image.id}
+                id={image.id}
+                url={image.url}
+                title={image.title}
+              />
+            ))}
+          </div>
+        </section>
+      </main>
   );
 }

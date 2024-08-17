@@ -6,6 +6,8 @@ import toast, { Toaster } from "react-hot-toast";
 import formatTime from "../utils/formatTime";
 import useTitle from "../hooks/useTitle";
 import confetti from "canvas-confetti";
+import WinDialog from "../Components/WinDialog";
+import Characters from "../Components/Characters";
 
 export default function Game() {
   const [isVisible, setIsVisible] = useState(null);
@@ -147,59 +149,22 @@ export default function Game() {
   return (
     <main>
       <Toaster position="top-center" />
-      <dialog
-        ref={dialogRef}
-        className="p-4 rounded-lg shadow-xl "
-        onClose={(e) => e.preventDefault()}
-      >
-        <h2 className="text-2xl font-bold mb-4">Congratulations, you won!</h2>
-        <form onSubmit={handleWinSubmit} method="dialog">
-          <label htmlFor="name" className="block mb-2">
-            Enter your name:
-          </label>
-          <input
-            type="text"
-            id="name"
-            required
-            className="w-full p-2 border rounded mb-4"
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            Submit Score
-          </button>
-          <button
-            type="button"
-            onClick={handleSkip}
-            className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
-          >
-            Skip
-          </button>
-        </form>
-      </dialog>
-
-      <section className="flex justify-between items-center  p-2 px-8">
-        {characters && (
-          <div className="flex gap-4">
-            {characters.map((char) => (
-              <img
-                key={char.id}
-                src={char.picture}
-                alt={char.name}
-                className={`h-20 w-auto ${
-                  char.isFound
-                    ? "border-green-500 opacity-50 grayscale"
-                    : "border-gray-300 hover:border-blue-500 transition-all duration-300"
-                }`}
-              />
-            ))}
-          </div>
-        )}
-        {gameStartTime && <p className="text-2xl">{formatTime(elapsedTime)}</p>}
-      </section>
+      <WinDialog
+        handleWinSubmit={handleWinSubmit}
+        handleSkip={handleSkip}
+        dialogRef={dialogRef}
+      />
+      <Characters
+        elapsedTime={elapsedTime}
+        gameStartTime={gameStartTime}
+        characters={characters}
+      />
       <section className="cursor-crosshair absolute" onClick={handleClick}>
-        <img className="h-full w-full object-cover" src={imageURL} alt="" />
+        <img
+          className="h-full w-full object-cover"
+          src={imageURL}
+          alt={title}
+        />
         {charFoundMarkers.map((mark, index) => (
           <div
             key={index}

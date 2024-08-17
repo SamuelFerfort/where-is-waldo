@@ -11,7 +11,7 @@ export default function ImageCard({ url, title, id }) {
   return (
     <Link
       to={`/game/${id}`}
-      className="rounded-sm hover:scale-105 transition-transform relative"
+      className="rounded-sm hover:scale-105 transition-transform relative hover:contrast-75"
     >
       <article className=" bg-gray-800 rounded-lg w-80 h-96">
           <img
