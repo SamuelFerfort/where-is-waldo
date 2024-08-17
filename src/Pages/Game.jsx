@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import formatTime from "../utils/formatTime";
 import useTitle from "../hooks/useTitle";
+import confetti from "canvas-confetti";
 
 export default function Game() {
   const [isVisible, setIsVisible] = useState(null);
@@ -43,6 +44,12 @@ export default function Game() {
     if (characters.length > 0 && characters.every((char) => char.isFound)) {
       setIsGameOver(true);
       setGameEndTime(Date.now());
+      confetti({
+        particleCount: 3000,
+        spread: 150,
+        origin: { y: 0.6 },
+        zIndex: 1000000,
+      });
     }
   }, [characters]);
 
@@ -86,6 +93,8 @@ export default function Game() {
     const absoluteX = e.clientX - rect.left;
     const absoluteY = e.clientY - rect.top;
 
+    console.log("X:", xPercent);
+    console.log("Y:", yPercent);
     setCoordinates({ x: absoluteX, y: absoluteY });
     setIsVisible(true);
     try {
@@ -113,7 +122,7 @@ export default function Game() {
           updateCharactersFound(charName);
           setCharFoundMarkers([
             ...charFoundMarkers,
-            { x: absoluteX, y: absoluteY, name: charName },
+            { x: xPercent, y: yPercent, name: charName },
           ]);
         });
       } else {
@@ -140,7 +149,7 @@ export default function Game() {
       <Toaster position="top-center" />
       <dialog
         ref={dialogRef}
-        className="p-4 rounded-lg shadow-xl"
+        className="p-4 rounded-lg shadow-xl "
         onClose={(e) => e.preventDefault()}
       >
         <h2 className="text-2xl font-bold mb-4">Congratulations, you won!</h2>
@@ -196,8 +205,8 @@ export default function Game() {
             key={index}
             className="absolute w-4 h-4 bg-green-500 rounded-full border-2 border-white"
             style={{
-              left: `${mark.x}px`,
-              top: `${mark.y}px`,
+              left: `${mark.x}%`,
+              top: `${mark.y}%`,
               transform: "translate(-50%, -50%)",
             }}
           ></div>

@@ -9,14 +9,21 @@ ImageCard.propTypes = {
 
 export default function ImageCard({ url, title, id }) {
   return (
-    <article className=" bg-gray-800 rounded-lg w-80">
-      <img src={url} alt="" className="w-full h-auto bg-white" />
-      <div className="p-4 flex flex-col items-center gap-4">
-        <h2>{title}</h2>
-        <Link to={`/game/${id}`} className="bg-sky-500 py-1 px-2 rounded">
-          Start Game
-        </Link>
-      </div>
-    </article>
+    <Link
+      to={`/game/${id}`}
+      className="rounded-sm hover:scale-105 transition-transform relative"
+    >
+      <article className=" bg-gray-800 rounded-lg w-80 h-96">
+          <img
+            src={url}
+            alt=""
+            className="w-full h-full bg-white object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <span className="absolute bottom-2 left-2 text-white font-semibold text-sm ">
+            {title}
+          </span>
+      </article>
+    </Link>
   );
 }
