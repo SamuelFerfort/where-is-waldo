@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import TargetingBox from "../Components/TargetingBox";
 import useFetchCharacters from "../hooks/useFetchGame";
 import { useParams, useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
-import formatTime from "../utils/formatTime";
+import toast from "react-hot-toast";
 import useTitle from "../hooks/useTitle";
 import confetti from "canvas-confetti";
 import WinDialog from "../Components/WinDialog";
 import Characters from "../Components/Characters";
+import StyledToaster from "../Components/StyledToaster";
 
 export default function Game() {
   const [isVisible, setIsVisible] = useState(null);
@@ -148,7 +148,7 @@ export default function Game() {
 
   return (
     <main>
-      <Toaster position="top-center" />
+      <StyledToaster />
       <WinDialog
         handleWinSubmit={handleWinSubmit}
         handleSkip={handleSkip}
