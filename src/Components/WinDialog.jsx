@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function WinDialog({ dialogRef, handleWinSubmit, handleSkip }) {
   return (
     <dialog
@@ -10,9 +12,7 @@ export default function WinDialog({ dialogRef, handleWinSubmit, handleSkip }) {
         method="dialog"
         className="flex flex-col gap-10"
       >
-        <h2 className="text-4xl neon-text ">
-          Congratulations, you won!
-        </h2>
+        <h2 className="text-4xl neon-text ">Congratulations, you won!</h2>
 
         <div>
           <label htmlFor="name" className="block mb-2 text-xl">
@@ -22,7 +22,7 @@ export default function WinDialog({ dialogRef, handleWinSubmit, handleSkip }) {
             type="text"
             id="name"
             required
-            className="w-full p-2 neon-border rounded mb-4 neon-text bg-gray-700"
+            className="w-full p-2 neon-border rounded mb-4 neon-text bg-gray-700 "
           />
         </div>
 
@@ -46,4 +46,10 @@ export default function WinDialog({ dialogRef, handleWinSubmit, handleSkip }) {
   );
 }
 
-
+WinDialog.propTypes = {
+  handleSkip: PropTypes.func,
+  handleWinSubmit: PropTypes.func,
+  dialogRef: PropTypes.shape({
+    current: PropTypes.instanceOf(Element),
+  }),
+};
