@@ -10,6 +10,7 @@ import Characters from "../Components/Characters";
 import StyledToaster from "../Components/StyledToaster";
 import Loading from "../Components/Loading";
 import Error from "../Components/Error";
+import Checkmark from "../Components/Checkmark";
 
 export default function Game() {
   const [isVisible, setIsVisible] = useState(null);
@@ -146,7 +147,7 @@ export default function Game() {
 
   if (isLoading) return <Loading />;
 
-  if (error) return <Error error={error}/>;
+  if (error) return <Error error={error} />;
 
   return (
     <main>
@@ -168,15 +169,7 @@ export default function Game() {
           alt={title}
         />
         {charFoundMarkers.map((mark, index) => (
-          <div
-            key={index}
-            className="absolute w-4 h-4 bg-green-500 rounded-full border-2 border-white"
-            style={{
-              left: `${mark.x}%`,
-              top: `${mark.y}%`,
-              transform: "translate(-50%, -50%)",
-            }}
-          ></div>
+          <Checkmark key={index} x={mark.x} y={mark.y} />
         ))}
         <TargetingBox
           x={coordinates.x}

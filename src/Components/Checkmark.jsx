@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-const NeonCheckmark = ({ x, y }) => {
+const Checkmark = ({ x, y }) => {
   return (
     <div
-      className="absolute w-6 h-6 flex items-center justify-center"
+      className="absolute w-10 h-10 flex items-center justify-center"
       style={{
         left: `${x}%`,
         top: `${y}%`,
@@ -18,20 +18,20 @@ const NeonCheckmark = ({ x, y }) => {
       >
         <path
           d="M20 6L9 17L4 12"
-          stroke="#bc13fe"
+          stroke="#00ff00"
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="neon-text-subtle"
+          className="checkmark-path"
         />
       </svg>
     </div>
   );
 };
 
-NeonCheckmark.propTypes = {
-  x: PropTypes.number,
-  y: PropTypes.number,
+Checkmark.propTypes = {
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
 };
 
-export default NeonCheckmark;
+export default Checkmark;
