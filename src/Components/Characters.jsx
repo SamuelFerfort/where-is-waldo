@@ -35,7 +35,7 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
         </div>
       )}
       {gameStartTime && (
-        <p className="text-2xl font-bold neon-text-subtle absolute top-4">
+        <p className="text-lg  sm:text-4xl font-bold neon-text-subtle absolute top-5 sm:top-3">
           {formatTime(elapsedTime)}
         </p>
       )}
