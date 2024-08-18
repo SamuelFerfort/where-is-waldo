@@ -5,9 +5,14 @@ import PropTypes from "prop-types";
 const LeaderboardList = ({ filteredLeaderboard, title }) => {
   if (!filteredLeaderboard || filteredLeaderboard.length === 0) {
     return (
-      <h1 className="text-2xl font-bold text-white neon-text-subtle">
-        No leaderboard data, be the first one to beat the game!
-      </h1>
+      <>
+        <h1 className="text-3xl font-bold mb-4 text-center  neon-text">
+          {title}
+        </h1>
+        <h1 className="text-2xl font-bold text-white neon-text-subtle">
+          No leaderboard data, be the first one to beat the game!
+        </h1>
+      </>
     );
   }
 
