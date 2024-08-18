@@ -33,7 +33,7 @@ export default function Game() {
     characters,
     updateCharactersFound,
     gameStartTime,
-  } = useFetchCharacters(`${API_URL}/api/images/${imageId}`);
+  } = useFetchCharacters(`${API_URL}api/images/${imageId}`);
 
   const dialogRef = useRef(null);
   const navigate = useNavigate();
