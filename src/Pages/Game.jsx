@@ -49,12 +49,44 @@ export default function Game() {
     if (characters.length > 0 && characters.every((char) => char.isFound)) {
       setIsGameOver(true);
       setGameEndTime(Date.now());
-      confetti({
-        particleCount: 3000,
-        spread: 150,
-        origin: { y: 0.6 },
-        zIndex: 1000000,
-      });
+      const duration = 5 * 1000; // 5 seconds
+      const animationEnd = Date.now() + duration;
+      const defaults = {
+        startVelocity: 30,
+        spread: 360,
+        ticks: 60,
+      };
+
+      const randomInRange = (min, max) => Math.random() * (max - min) + min;
+
+      const intervalId = setInterval(() => {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(intervalId);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+
+        confetti(
+          Object.assign({}, defaults, {
+            particleCount,
+            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+            colors: ["#ff00ff", "#00ffff", "#ff00ff", "#ff00ff"],
+            emojis: ["🔍", "✨", "🎉"],
+            scalar: randomInRange(0.9, 1.1),
+          })
+        );
+        confetti(
+          Object.assign({}, defaults, {
+            particleCount,
+            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+            colors: ["#00ffff", "#ff00ff", "#ffff00", "#00ffff"],
+            emojis: ["🔍", "✨", "🎉"],
+            scalar: randomInRange(0.9, 1.1),
+          })
+        );
+      }, 250);
     }
   }, [characters]);
 
