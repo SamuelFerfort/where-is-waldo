@@ -5,6 +5,7 @@ import LeaderboardList from "../Components/LeaderboardList";
 import ImageGrid from "../Components/ImageGrid";
 import Loading from "../Components/Loading";
 import Error from "../Components/Error";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Leaderboard() {
   const [imageFilter, setImageFilter] = useState(null);
@@ -15,7 +16,7 @@ export default function Leaderboard() {
   } = useQuery({
     queryKey: ["leaderboard"],
     queryFn: () =>
-      fetch("http://localhost:3000/api/leaderboard").then((res) => res.json()),
+      fetch(`${API_URL}api/leaderboard`).then((res) => res.json()),
   });
   const {
     data: images,
@@ -24,7 +25,7 @@ export default function Leaderboard() {
   } = useQuery({
     queryKey: ["images"],
     queryFn: async () => {
-      return fetch("http://localhost:3000/api/images").then((res) =>
+      return fetch(`${API_URL}api/images`).then((res) =>
         res.json()
       );
     },

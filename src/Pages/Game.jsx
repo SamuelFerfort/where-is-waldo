@@ -12,6 +12,10 @@ import Loading from "../Components/Loading";
 import Error from "../Components/Error";
 import Checkmark from "../Components/Checkmark";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
+
 export default function Game() {
   const [isVisible, setIsVisible] = useState(null);
   const { imageId } = useParams();
@@ -29,7 +33,7 @@ export default function Game() {
     characters,
     updateCharactersFound,
     gameStartTime,
-  } = useFetchCharacters(`http://localhost:3000/api/images/${imageId}`);
+  } = useFetchCharacters(`${API_URL}/api/images/${imageId}`);
 
   const dialogRef = useRef(null);
   const navigate = useNavigate();
@@ -49,7 +53,7 @@ export default function Game() {
     if (characters.length > 0 && characters.every((char) => char.isFound)) {
       setIsGameOver(true);
       setGameEndTime(Date.now());
-      const duration = 5 * 1000; // 5 seconds
+      const duration = 5 * 1000; 
       const animationEnd = Date.now() + duration;
       const defaults = {
         startVelocity: 30,
@@ -95,7 +99,7 @@ export default function Game() {
     const playerName = e.target.elements.name.value;
     const gameDuration = gameEndTime - gameStartTime;
     try {
-      const response = await fetch("http://localhost:3000/api/leaderboard", {
+      const response = await fetch(`${API_URL}api/leaderboard`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +139,7 @@ export default function Game() {
     setCoordinates({ x: absoluteX, y: absoluteY });
     setIsVisible(true);
     try {
-      const response = await fetch(`http://localhost:3000/api/characters/`, {
+      const response = await fetch(`${API_URL}api/characters/`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

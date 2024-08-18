@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useTitle from "../hooks/useTitle";
 import Loading from "../Components/Loading";
 import Error from "../Components/Error";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Landing() {
   const {
@@ -12,7 +13,7 @@ export default function Landing() {
   } = useQuery({
     queryKey: ["images"],
     queryFn: async () => {
-      return fetch("http://localhost:3000/api/images").then((res) =>
+      return fetch(`${API_URL}api/images`).then((res) =>
         res.json()
       );
     },
