@@ -11,7 +11,7 @@ const TargetingBox = ({ x, y, isVisible }) => {
     top: `${y - boxHeight / 2}px`,
     width: `${boxWidth}px`,
     height: `${boxHeight}px`,
-    border: "2px solid red",
+    border: "2px solid",
     borderRadius: "50%",
     pointerEvents: "none",
   };  
@@ -20,7 +20,7 @@ const TargetingBox = ({ x, y, isVisible }) => {
   
   return (
     <>
-      <div style={boxStyle} />
+      <div style={boxStyle} className="neon-text neon-border" />
     </>
   );
 };

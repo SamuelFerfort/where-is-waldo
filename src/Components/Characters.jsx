@@ -5,17 +5,17 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
   return (
     <section className="flex flex-col justify-center items-center p-3 ">
       {characters && (
-        <div className="flex gap-4 p-4 bg-gray-800 rounded-xl shadow-lg">
+        <div className="flex gap-4 p-4 bg-gray-800 rounded-xl ">
           {characters.map((char) => (
             <div
               key={char.id}
               className={`
           relative w-24 h-24 flex items-center justify-center
-          bg-white bg-opacity-10 rounded-lg overflow-hidden
+          bg-purple-600 bg-opacity-20 rounded-lg overflow-hidden
           ${
             char.isFound
               ? "opacity-50 grayscale"
-              : "hover:scale-110 transition-all duration-300 hover:bg-opacity-20"
+              : "hover:scale-110 transition-all duration-300 hover:bg-opacity-30 "
           }
         `}
             >
@@ -35,7 +35,7 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
         </div>
       )}
       {gameStartTime && (
-        <p className="text-2xl font-bold text-white absolute top-4">
+        <p className="text-2xl font-bold neon-text-subtle absolute top-4">
           {formatTime(elapsedTime)}
         </p>
       )}

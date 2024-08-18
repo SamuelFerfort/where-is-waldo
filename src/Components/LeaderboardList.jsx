@@ -13,7 +13,7 @@ const LeaderboardList = ({ filteredLeaderboard, title }) => {
 
   return (
     <section className="w-full max-w-2xl">
-      <h1 className="text-3xl font-bold mb-4 text-center text-white neon-text">
+      <h1 className="text-3xl font-bold mb-4 text-center  neon-text">
         {title}
       </h1>
       <div className="overflow-x-auto bg-gray-800 rounded-lg shadow-lg neon-border">
