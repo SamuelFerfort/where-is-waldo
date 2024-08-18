@@ -8,6 +8,8 @@ import confetti from "canvas-confetti";
 import WinDialog from "../Components/WinDialog";
 import Characters from "../Components/Characters";
 import StyledToaster from "../Components/StyledToaster";
+import Loading from "../Components/Loading";
+import Error from "../Components/Error";
 
 export default function Game() {
   const [isVisible, setIsVisible] = useState(null);
@@ -142,9 +144,9 @@ export default function Game() {
     }
   }, [isGameOver]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
 
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <Error error={error}/>;
 
   return (
     <main>

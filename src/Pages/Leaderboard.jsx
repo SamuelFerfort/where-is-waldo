@@ -3,6 +3,8 @@ import { useState } from "react";
 import useTitle from "../hooks/useTitle";
 import LeaderboardList from "../Components/LeaderboardList";
 import ImageGrid from "../Components/ImageGrid";
+import Loading from "../Components/Loading";
+import Error from "../Components/Error";
 
 export default function Leaderboard() {
   const [imageFilter, setImageFilter] = useState(null);
@@ -36,9 +38,9 @@ export default function Leaderboard() {
     setImageFilter(filter);
   }
 
-  if (isPending || isImagesPending) return <p>Loading...</p>;
-  if (error) return <p>Error fetching leaderboard: {error.message}</p>;
-  if (imagesError) return <p>Error fetching images: {imagesError.message}</p>;
+  if (isPending || isImagesPending) return <Loading />;
+  if (error || imagesError) return <Error error={error} />;
+
   const filter = imageFilter ? imageFilter : images[0].id;
 
   const filteredLeaderboard = leaderboard.filter(

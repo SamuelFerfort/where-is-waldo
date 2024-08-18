@@ -22,3 +22,7 @@ body {
 .neon-border {
   box-shadow: 0 0 5px #bc13fe, 0 0 10px #bc13fe;
 }
+
+.neon {
+  color: #bc13fe;
+}
