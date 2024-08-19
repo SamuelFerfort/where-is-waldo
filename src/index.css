@@ -26,3 +26,14 @@ body {
 .neon {
   color: #bc13fe;
 }
+
+dialog[open] {
+  scale: 1;
+  transition: scale 0.3s ease;
+
+  @starting-style {
+    scale: 0;
+  }
+}
+
+
