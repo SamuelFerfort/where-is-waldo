@@ -7,7 +7,7 @@ const useFetch = (URL) => {
   const [characters, setCharacters] = useState([]);
   const [gameStartTime, setGameStartTime] = useState(null)
   const [title, setTitle] = useState("Loading...")
-
+  const [sessionToken, setSessionToken] = useState(null)
 
 
 
@@ -22,13 +22,13 @@ const useFetch = (URL) => {
           throw new Error(data.message);
         }
         const newCharacters = data.characters.map(c => ({ ...c, isFound: false }));
-        console.log('Initial characters state:', newCharacters);
         setCharacters(newCharacters);
         setImageURL(data.url);
         
         setLoading(false);
         setGameStartTime(Date.now());
         setTitle(data.title)
+        setSessionToken(data.sessionToken)
 
       } catch (err) {
         console.error(`Error fetching items:`, err);
@@ -55,7 +55,7 @@ const useFetch = (URL) => {
 
  
 
-  return { imageURL, isLoading, error, updateCharactersFound, characters, gameStartTime, title };
+  return { imageURL, isLoading, error, updateCharactersFound, characters, gameStartTime, title, sessionToken };
 };
 
 export default useFetch;

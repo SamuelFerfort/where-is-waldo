@@ -14,8 +14,6 @@ import Checkmark from "../Components/Checkmark";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-
-
 export default function Game() {
   const [isVisible, setIsVisible] = useState(null);
   const { imageId } = useParams();
@@ -33,6 +31,7 @@ export default function Game() {
     characters,
     updateCharactersFound,
     gameStartTime,
+    sessionToken,
   } = useFetchCharacters(`${API_URL}api/images/${imageId}`);
 
   const dialogRef = useRef(null);
@@ -53,7 +52,7 @@ export default function Game() {
     if (characters.length > 0 && characters.every((char) => char.isFound)) {
       setIsGameOver(true);
       setGameEndTime(Date.now());
-      const duration = 5 * 1000; 
+      const duration = 5 * 1000;
       const animationEnd = Date.now() + duration;
       const defaults = {
         startVelocity: 30,
@@ -108,17 +107,20 @@ export default function Game() {
           name: playerName,
           duration: gameDuration,
           imageId,
+          sessionToken,
         }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error("Failed to submit score");
+        throw new Error(data.message || "Failed to submit score");
       }
 
       navigate(`/leaderboard`);
     } catch (error) {
-      console.error("Error submitting score:", error);
-      toast.error("Error checking coordinates. Please try again.");
+      console.error("Error submitting score:", error.message);
+      toast.error(error.message || "Error submitting score. Please try again.");
     }
   }
 

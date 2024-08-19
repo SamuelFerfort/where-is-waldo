@@ -26,11 +26,7 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
           flex justify-center items-center 
             gap-4 z-10 bg-opacity-70
            right-0 
-          ${
-            isSticky
-              ? "fixed top-4 "
-              : "absolute top-20 right-0 "
-          }
+          ${isSticky ? "fixed top-4 " : "absolute top-20 right-0 "}
         `}
         >
           {characters.map((char) => (
@@ -54,7 +50,11 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
               {char.isFound && (
                 <div className="absolute inset-0 rounded-lg "></div>
               )}
-              <span className={`absolute bottom-0 left-0 right-0 text-center text-white text-xs py-1 px-2 bg-black bg-opacity-70 ${char.isFound ? "line-through" : ""}`}>
+              <span
+                className={`absolute bottom-0 left-0 right-0 text-center text-white text-xs py-1 px-2 bg-black bg-opacity-70 ${
+                  char.isFound ? "line-through" : ""
+                }`}
+              >
                 {char.name}
               </span>
             </div>
@@ -72,6 +72,6 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
 
 Characters.propTypes = {
   characters: PropTypes.array,
-  gameStartTime: PropTypes.string,
-  elapsedTime: PropTypes.string,
+  gameStartTime: PropTypes.number,
+  elapsedTime: PropTypes.number,
 };
