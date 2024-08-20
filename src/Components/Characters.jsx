@@ -23,17 +23,17 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
       {characters && (
         <div
           className={`
-          flex justify-center items-center 
-            gap-4 z-10 bg-opacity-70
-           right-0 
-          ${isSticky ? "fixed top-4 " : "absolute top-20 right-0 "}
+          flex justify-center items-center flex-wrap 
+            gap-2 sm:gap-4 z-10 bg-opacity-70
+           right-9
+          ${isSticky ? "fixed top-4 " : "absolute top-16 sm:top-20   "}
         `}
         >
           {characters.map((char) => (
             <div
               key={char.id}
               className={`
-          relative w-24 h-24 flex items-center justify-center
+          relative sm:w-24 sm:h-24 w-16 h-16 flex items-center justify-center
           bg-purple-600 bg-opacity-20 rounded-lg overflow-hidden
           ${
             char.isFound
@@ -45,7 +45,7 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
               <img
                 src={char.picture}
                 alt={char.name}
-                className="max-w-full max-h-full object-contain p-2"
+                className="max-w-full max-h-full object-contain p-1"
               />
               {char.isFound && (
                 <div className="absolute inset-0 rounded-lg "></div>
@@ -62,7 +62,7 @@ export default function Characters({ characters, gameStartTime, elapsedTime }) {
         </div>
       )}
       {gameStartTime && (
-        <p className="text-lg  sm:text-4xl font-bold neon-text-subtle absolute top-5 sm:top-3">
+        <p className="text-base  sm:text-3xl font-bold neon-text-subtle absolute top-2 sm:top-3">
           {formatTime(elapsedTime)}
         </p>
       )}

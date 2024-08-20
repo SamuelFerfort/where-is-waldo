@@ -35,7 +35,6 @@ export default function Leaderboard() {
 
   function handleClick(e) {
     const filter = e.currentTarget.dataset.id;
-    console.log(filter);
     setImageFilter(filter);
   }
 
