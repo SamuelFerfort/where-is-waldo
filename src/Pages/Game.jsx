@@ -188,7 +188,7 @@ export default function Game() {
   if (error) return <Error error={error} />;
 
   return (
-    <main>
+    <main >
       <StyledToaster />
       <WinDialog
         handleWinSubmit={handleWinSubmit}

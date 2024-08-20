@@ -50,7 +50,7 @@ export default function Leaderboard() {
   const title = images.find((img) => img.id === filter).title;
 
   return (
-    <main className="p-7 flex flex-col items-center gap-10">
+    <main className="p-7 flex flex-col items-center gap-10 main">
       <ImageGrid images={images} handleClick={handleClick} />
       <LeaderboardList
         filteredLeaderboard={filteredLeaderboard}

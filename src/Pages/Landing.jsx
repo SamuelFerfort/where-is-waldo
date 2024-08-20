@@ -13,9 +13,7 @@ export default function Landing() {
   } = useQuery({
     queryKey: ["images"],
     queryFn: async () => {
-      return fetch(`${API_URL}api/images`).then((res) =>
-        res.json()
-      );
+      return fetch(`${API_URL}api/images`).then((res) => res.json());
     },
   });
 
@@ -23,12 +21,14 @@ export default function Landing() {
 
   if (isPending) return <Loading />;
 
-  if (error) return <Error  error={error}/>;
- 
+  if (error) return <Error error={error} />;
+
   return (
-    <main className="container mx-auto p-7 pt-20">
+    <main className="container mx-auto p-7 pt-20 main">
       <section className="flex flex-col gap-8 items-center">
-        <h1 className=" text-3xl sm:text-4xl font-bold neon-text">Choose Map</h1>
+        <h1 className=" text-3xl sm:text-4xl font-bold neon-text">
+          Choose Map
+        </h1>
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {images.map((image) => (
             <ImageCard
