@@ -200,9 +200,9 @@ export default function Game() {
         gameStartTime={gameStartTime}
         characters={characters}
       />
-      <section className="cursor-crosshair relative  sm:h-auto" onClick={handleClick}>
+      <section className="cursor-crosshair relative  " onClick={handleClick}>
         <img
-          className="h-full w-full object-cover"
+          className=" h-full w-full object-cover"
           src={imageURL}
           alt={title}
         />

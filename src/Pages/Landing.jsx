@@ -24,7 +24,7 @@ export default function Landing() {
   if (error) return <Error error={error} />;
 
   return (
-    <main className="container mx-auto p-7 pt-20 main">
+    <main className="container mx-auto p-7 pt-20 ">
       <section className="flex flex-col gap-8 items-center">
         <h1 className=" text-3xl sm:text-4xl font-bold neon-text">
           Choose Map

@@ -4,8 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+
+#root {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #111827, #000000);
   font-family: "Orbitron";
+
 }
 
 .neon-text {
@@ -37,6 +41,6 @@ dialog[open] {
 }
 
 .main{
-  height: calc(100vh - 56px);
+  height: minmax(calc(100vh - 56px), auto) ;
 }
 
