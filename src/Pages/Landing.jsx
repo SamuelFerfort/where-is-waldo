@@ -28,7 +28,7 @@ export default function Landing() {
   return (
     <main className="container mx-auto p-7 pt-20">
       <section className="flex flex-col gap-8 items-center">
-        <h1 className="text-4xl font-bold neon-text">Choose Map</h1>
+        <h1 className=" text-3xl sm:text-4xl font-bold neon-text">Choose Map</h1>
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {images.map((image) => (
             <ImageCard

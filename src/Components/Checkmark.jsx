@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const Checkmark = ({ x, y }) => {
   return (
     <div
-      className="absolute w-10 h-10 flex items-center justify-center"
+      className="absolute w-4 h-4 sm:w-10 sm:h-10 flex items-center justify-center"
       style={{
         left: `${x}%`,
         top: `${y}%`,
