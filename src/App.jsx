@@ -11,7 +11,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
-       <div className="  bg-gradient-to-br from-gray-900 to-black text-white">
+       <div className="   text-white">
         <Header />
         <Outlet />
       </div>
